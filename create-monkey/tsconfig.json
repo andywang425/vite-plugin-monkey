@@ -1,0 +1,7 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "./"
+  },
+  "include": ["src", "tsdown.config.ts", "scripts"]
+}

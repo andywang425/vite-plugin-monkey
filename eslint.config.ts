@@ -1,12 +1,12 @@
-import eslint from '@eslint/js';
-import tsEslint from 'typescript-eslint';
+import { defineConfig } from 'eslint/config';
+import js from '@eslint/js';
+import ts from 'typescript-eslint';
+import prettier from 'eslint-config-prettier/flat';
 import unusedImports from 'eslint-plugin-unused-imports';
-import eslintConfigPrettier from 'eslint-config-prettier';
 
-export default tsEslint.config(
-  eslint.configs.recommended,
-  ...tsEslint.configs.recommended,
-  eslintConfigPrettier,
+export default defineConfig(
+  js.configs.recommended,
+  ts.configs.recommended,
   {
     plugins: {
       'unused-imports': unusedImports,
@@ -39,9 +39,11 @@ export default tsEslint.config(
   {
     ignores: [
       '**/dist/',
+      '**/.vitepress/cache/',
       'playground/',
-      'packages/create-monkey/template-*/',
-      'packages/vite-plugin-monkey/*.d.ts',
+      'create-monkey/template-*/',
+      'vite-plugin-monkey/*.d.ts',
     ],
   },
+  prettier,
 );

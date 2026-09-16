@@ -1,0 +1,69 @@
+{
+  "name": "vite-plugin-monkey",
+  "version": "8.1.1",
+  "description": "A vite plugin server and build your.user.js for userscript engine like Tampermonkey and Violentmonkey and Greasemonkey",
+  "main": "src/node/index.ts",
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "global.d.ts",
+    "client.d.ts",
+    "style.d.ts"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "main": "dist/node/index.mjs",
+    "types": "dist/node/index.d.mts"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.ts",
+    "prebuild": "tsc",
+    "build": "tsdown",
+    "postbuild": "node ./scripts/postbuild.ts",
+    "postpublish": "curl -X PUT https://registry-direct.npmmirror.com/vite-plugin-monkey/sync"
+  },
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "monkey",
+    "Tampermonkey",
+    "Violentmonkey",
+    "Greasemonkey",
+    "userscript",
+    "greasyfork",
+    "typescript"
+  ],
+  "author": "lisonge",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lisonge/vite-plugin-monkey.git",
+    "directory": "vite-plugin-monkey"
+  },
+  "bugs": {
+    "url": "https://github.com/lisonge/vite-plugin-monkey/issues"
+  },
+  "homepage": "https://github.com/lisonge/vite-plugin-monkey#readme",
+  "dependencies": {
+    "acorn-walk": "catalog:",
+    "cross-spawn": "catalog:",
+    "htmlparser2": "catalog:",
+    "import-meta-resolve": "catalog:",
+    "magic-string": "catalog:",
+    "mrmime": "catalog:",
+    "open": "catalog:",
+    "picocolors": "catalog:",
+    "postcss-url": "catalog:",
+    "rollup": "catalog:",
+    "systemjs": "catalog:"
+  },
+  "peerDependencies": {
+    "vite": "catalog:"
+  },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    }
+  }
+}

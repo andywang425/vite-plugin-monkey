@@ -20,8 +20,5 @@
   },
   "dependencies": {
     "vite-plugin-monkey": "workspace:*"
-  },
-  "volta": {
-    "extends": "../../package.json"
   }
 }

@@ -6,74 +6,60 @@
     "postinstall": "simple-git-hooks",
     "format": "prettier --cache --write --ignore-unknown .",
     "lint": "eslint --cache --fix .",
-    "build": "pnpm -r --filter=./packages/* build",
-    "build:playground": "pnpm -r --filter=./playground/* build",
-    "ci-publish": "tsx scripts/publishCI.ts"
+    "build": "pnpm -r --filter=./create-monkey --filter=./vite-plugin-monkey --filter=./website build",
+    "build:playground": "pnpm -r --filter=./playground/* build"
   },
   "dependencies": {
-    "@commitlint/cli": "19.8.1",
-    "@commitlint/config-conventional": "19.8.1",
-    "@commitlint/types": "19.8.1",
-    "@eslint/js": "9.33.0",
-    "@types/cross-spawn": "6.0.6",
-    "@types/fs-extra": "11.0.4",
-    "@types/minimist": "1.2.5",
-    "@types/node": "24.3.0",
-    "@types/postcss-url": "10.0.4",
-    "@types/prompts": "2.4.9",
-    "@types/react": "19.1.10",
-    "@types/react-dom": "19.1.7",
-    "@types/semver": "7.7.0",
-    "@vitejs/plugin-legacy": "7.2.1",
-    "@vitejs/plugin-react": "5.0.0",
-    "@vitejs/plugin-vue": "6.0.1",
-    "acorn": "8.15.0",
-    "acorn-walk": "8.3.4",
-    "element-plus": "2.10.7",
-    "eslint": "9.33.0",
-    "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-unused-imports": "4.2.0",
-    "execa": "9.6.0",
-    "fs-extra": "11.3.1",
-    "lint-staged": "16.1.5",
-    "magic-string": "0.30.17",
-    "minimist": "1.2.8",
-    "normalize.css": "8.0.1",
-    "picocolors": "1.1.1",
-    "pinia": "3.0.3",
-    "postcss-url": "10.1.3",
-    "prettier": "3.6.2",
-    "react": "19.1.1",
-    "react-dom": "19.1.1",
-    "sass-embedded": "1.90.0",
-    "semver": "7.7.2",
-    "simple-git-hooks": "2.13.1",
-    "solid-js": "1.9.9",
-    "terser": "5.43.1",
-    "tsup": "8.5.0",
-    "tsx": "4.20.4",
-    "typescript": "5.9.2",
-    "typescript-eslint": "8.40.0",
-    "unimport": "5.2.0",
-    "unocss": "66.4.2",
-    "unplugin-auto-import": "20.0.0",
-    "vite": "7.1.2",
-    "vite-plugin-solid": "2.11.8",
-    "vue": "3.5.18"
+    "@eslint/js": "catalog:",
+    "@types/cross-spawn": "catalog:",
+    "@types/fs-extra": "catalog:",
+    "@types/minimist": "catalog:",
+    "@types/node": "catalog:",
+    "@types/postcss-url": "catalog:",
+    "@types/prompts": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@types/semver": "catalog:",
+    "@vitejs/plugin-legacy": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "@vitejs/plugin-vue": "catalog:",
+    "acorn": "catalog:",
+    "acorn-walk": "catalog:",
+    "element-plus": "catalog:",
+    "esbuild": "catalog:",
+    "eslint": "catalog:",
+    "eslint-config-prettier": "catalog:",
+    "eslint-plugin-unused-imports": "catalog:",
+    "execa": "catalog:",
+    "fs-extra": "catalog:",
+    "lint-staged": "catalog:",
+    "magic-string": "catalog:",
+    "minimist": "catalog:",
+    "normalize.css": "catalog:",
+    "picocolors": "catalog:",
+    "pinia": "catalog:",
+    "postcss-url": "catalog:",
+    "prettier": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "sass-embedded": "catalog:",
+    "semver": "catalog:",
+    "simple-git-hooks": "catalog:",
+    "solid-js": "catalog:",
+    "terser": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "typescript-eslint": "catalog:",
+    "unimport": "catalog:",
+    "unocss": "catalog:",
+    "unplugin-auto-import": "catalog:",
+    "vite": "catalog:",
+    "vite-plugin-solid": "catalog:",
+    "vitepress": "catalog:",
+    "vue": "catalog:"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm exec lint-staged",
-    "commit-msg": "pnpm exec commitlint --edit $1"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ],
-    "rules": {
-      "subject-case": [
-        0
-      ]
-    }
+    "pre-commit": "pnpm exec lint-staged"
   },
   "lint-staged": {
     "*.{js,cjs,mjs,ts}": [
@@ -84,9 +70,16 @@
       "prettier --cache --write"
     ]
   },
-  "volta": {
-    "node": "24.4.1",
-    "pnpm": "10.14.0"
-  },
-  "packageManager": "pnpm@10.14.0"
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "24",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": "11.5.2",
+      "onFail": "error"
+    }
+  }
 }

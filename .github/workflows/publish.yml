@@ -1,0 +1,42 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - 'v*'
+      - 'create-monkey*'
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: package.json
+
+      - uses: pnpm/action-setup@v6
+
+      - run: pnpm install
+
+      - run: pnpm build
+
+      - if: ${{ startsWith(github.ref_name, 'v') }}
+        run: pnpm -F vite-plugin-monkey publish --no-git-checks
+
+      - if: ${{ startsWith(github.ref_name, 'create-monkey') }}
+        run: pnpm -F create-monkey publish --no-git-checks
+
+      - if: ${{ startsWith(github.ref_name, 'v') }}
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name }}
+          body_path: ./vite-plugin-monkey/CHANGELOG.md
